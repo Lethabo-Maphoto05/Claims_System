@@ -1,0 +1,57 @@
+﻿@model ClaimsSystem.Models.LecturerClaim
+@{
+    ViewData["Title"] = "Submit Claim";
+}
+<h2>Submit Claim</h2>
+
+<form asp-action="Create" enctype="multipart/form-data" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Lecturer Name</label>
+        <input asp-for="LecturerName" class="form-control" />
+        <span asp-validation-for="LecturerName" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Hours Worked</label>
+        <input id="hours" asp-for="HoursWorked" class="form-control" step="0.1" />
+        <span asp-validation-for="HoursWorked" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Hourly Rate</label>
+        <input id="rate" asp-for="HourlyRate" class="form-control" step="0.01" />
+        <span asp-validation-for="HourlyRate" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <label class="form-label">Total Amount</label>
+        <input id="total" readonly class="form-control" />
+    </div>
+
+    <div class="col-12">
+        <label class="form-label">Notes</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Upload Document (.pdf .docx .xlsx)</label>
+        <input type="file" name="file" class="form-control" accept=".pdf,.docx,.xlsx" />
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-success" type="submit">Submit</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function recalc() {
+            var h = parseFloat($("#hours").val()) || 0;
+            var r = parseFloat($("#rate").val()) || 0;
+            $("#total").val((h * r).toFixed(2));
+        }
+        $("#hours, #rate").on("input", recalc);
+        $(document).ready(recalc);
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+}
