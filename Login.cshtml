@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Demo Login";
+}
+<h2>Demo Login</h2>
+<p>Select a role to demo app features:</p>
+<form method="post" asp-action="Login">
+    <select name="role" class="form-select" style="max-width:300px;">
+        <option value="Lecturer">Lecturer</option>
+        <option value="Coordinator">Coordinator</option>
+        <option value="Manager">Manager</option>
+        <option value="HR">HR</option>
+    </select>
+    <button type="submit" class="btn btn-primary mt-2">Login</button>
+</form>
+
