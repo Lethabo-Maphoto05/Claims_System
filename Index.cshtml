@@ -1,17 +1,8 @@
-﻿@model IEnumerable<ClaimsSystem.Models.LecturerClaim>
-@{
-    ViewData["Title"] = "HR - Approved Claims";
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
-<h2>Approved Claims</h2>
-<p>Total approved amount: @ViewBag.TotalApproved.ToString("C")</p>
-<a class="btn btn-primary" asp-action="ExportApprovedCsv">Export CSV</a>
 
-<table class="table table-striped mt-3">
-    <thead><tr><th>Id</th><th>Lecturer</th><th>Amount</th><th>Submitted</th></tr></thead>
-    <tbody>
-        @foreach (var c in Model)
-        {
-            <tr><td>@c.Id</td><td>@c.LecturerName</td><td>@c.Amount.ToString("C")</td><td>@c.DateSubmitted.ToLocalTime()</td></tr>
-        }
-    </tbody>
-</table>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
